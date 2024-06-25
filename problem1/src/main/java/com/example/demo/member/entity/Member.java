@@ -20,7 +20,6 @@ public class Member {
     @Id
     @GeneratedValue(generator = "UUID")
     @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
-    @ColumnDefault("random_uuid()")
     private UUID id;
     @Column(nullable = false)
     private String name;
