@@ -4,22 +4,16 @@ import com.example.demo.Item.dto.ItemRequestDto;
 import com.example.demo.Item.dto.ItemResponseDto;
 import lombok.Builder;
 import lombok.Getter;
-import org.hibernate.annotations.ColumnDefault;
-import org.hibernate.annotations.GenericGenerator;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import java.util.UUID;
+import javax.persistence.*;
 
 @Entity
 @Getter
 @Builder
 public class Item {
     @Id
-    @GenericGenerator(name = "UUID",strategy = "org.hibernate.id.UUIDGenerator")
-    @ColumnDefault("random_uuid()")
-    private UUID id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     @Column(unique = true)
     private String name;
     @Column(unique = true)
@@ -32,6 +26,6 @@ public class Item {
                 .build();
     }
     public ItemResponseDto toDto(){
-        return new ItemResponseDto(this.id.toString(),this.name,this.price);
+        return new ItemResponseDto(this.id,this.name,this.price);
     }
 }
