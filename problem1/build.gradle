@@ -30,6 +30,10 @@ dependencies {
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+	// H2
+	runtimeOnly 'com.h2database:h2'
+	//gson
+	implementation 'com.google.code.gson:gson:2.9.0'
 }
 
 tasks.named('test') {
