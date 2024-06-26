@@ -15,7 +15,7 @@ import java.util.UUID;
 @Getter
 public class Member {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
     @Column(nullable = false)
     private String name;
