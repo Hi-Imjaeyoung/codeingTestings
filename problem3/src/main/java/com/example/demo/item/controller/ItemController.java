@@ -3,6 +3,7 @@ package com.example.demo.item.controller;
 import com.example.demo.item.dto.ItemRequestDto;
 import com.example.demo.item.dto.ItemResponseDto;
 import com.example.demo.item.service.ItemService;
+import com.example.demo.redis.RedisService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

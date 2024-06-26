@@ -21,4 +21,11 @@ public class OrderController {
         OrderResponseDto orderResponseDto = orderService.createOrder(memberId,orderRequestDto);
         return new ResponseEntity<>(orderResponseDto, HttpStatus.CREATED);
     }
+
+    @PostMapping("api/order/create/redis")
+    public ResponseEntity<?> createOrderRedis(@RequestHeader Long memberId,
+                                         @RequestBody OrderRequestDto orderRequestDto){
+        OrderResponseDto orderResponseDto = orderService.createOrderRedis(memberId,orderRequestDto);
+        return new ResponseEntity<>(orderResponseDto, HttpStatus.CREATED);
+    }
 }
