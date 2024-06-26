@@ -6,10 +6,10 @@ import lombok.Setter;
 @Getter
 @Setter
 public class ItemResponseDto {
-    private String id;
+    private Long id;
     private String name;
     private int price;
-    public ItemResponseDto(String id, String name,int price){
+    public ItemResponseDto(Long id, String name,int price){
         this.id = id;
         this.name = name;
         this.price = price;

@@ -9,10 +9,10 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 public class MemberResponseDto {
-    private String id;
+    private Long id;
     private String name;
     private String email;
-    public MemberResponseDto(String id,String email,String name){
+    public MemberResponseDto(Long id,String email,String name){
         this.id = id;
         this.email = email;
         this.name = name;

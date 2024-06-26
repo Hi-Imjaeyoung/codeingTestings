@@ -7,10 +7,7 @@ import lombok.Getter;
 import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.GenericGenerator;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.UUID;
 
 @Entity
@@ -18,9 +15,8 @@ import java.util.UUID;
 @Getter
 public class Member {
     @Id
-    @GeneratedValue(generator = "UUID")
-    @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
-    private UUID id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long memberId;
     @Column(nullable = false)
     private String name;
     @Column(nullable = false,unique = true)
@@ -34,6 +30,6 @@ public class Member {
     }
 
     public MemberResponseDto toDto(){
-        return new MemberResponseDto(this.id.toString(),this.email,this.name);
+        return new MemberResponseDto(this.memberId,this.email,this.name);
     }
 }

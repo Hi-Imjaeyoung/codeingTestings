@@ -2,28 +2,28 @@ package com.example.demo.Item.entity;
 
 import com.example.demo.Item.dto.ItemRequestDto;
 import com.example.demo.Item.dto.ItemResponseDto;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.GenericGenerator;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.UUID;
 
 @Entity
 @Getter
 @Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class Item {
     @Id
-    @GeneratedValue(generator = "UUID")
-    @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
-    private UUID id;
-    @Column(unique = true)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    @Column
     private String name;
-    @Column(unique = true)
+    @Column
     private int price;
 
     public static Item toEntity(ItemRequestDto itemRequestDto){
@@ -33,6 +33,6 @@ public class Item {
                 .build();
     }
     public ItemResponseDto toDto(){
-        return new ItemResponseDto(this.id.toString(),this.name,this.price);
+        return new ItemResponseDto(this.id,this.name,this.price);
     }
 }
